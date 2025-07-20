@@ -20,7 +20,7 @@ connectDB();
 
 
 app.use(cors({
-  origin: "https://gravity-assignment-ub5x.vercel.app", 
+  origin: "https://gravity-frontend-nine.vercel.app", 
   credentials: true
 }));
 
