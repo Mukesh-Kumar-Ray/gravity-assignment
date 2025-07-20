@@ -7,6 +7,8 @@ export const generateTokenAndCookies = (user, res) => {
 
   res.cookie("jwt", token, {
     httpOnly: true,
+    sameSite: "none",
+    secure: true
   });
 
   return token;
