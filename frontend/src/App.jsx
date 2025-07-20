@@ -16,7 +16,7 @@ const App = () => {
    useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/user/profile", { withCredentials: true });
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/profile`, { withCredentials: true });
         setIsAuthenticated(true);
       } catch (err) {
         setIsAuthenticated(false);

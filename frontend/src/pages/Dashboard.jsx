@@ -10,7 +10,7 @@ const Dashboard = () => {
 
   const fetchTasks = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/task", {
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/task`, {
         withCredentials: true,
       });
       setTasks(res.data || []);
@@ -23,7 +23,7 @@ const Dashboard = () => {
   const handleAddTask = async () => {
     if (!newTask.title.trim() || !newTask.description.trim()) return;
     try {
-      const res = await axios.post("http://localhost:5000/task", newTask, {
+      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/task`, newTask, {
         withCredentials: true,
       });
       setTasks([...tasks, res.data]);
@@ -57,7 +57,7 @@ const Dashboard = () => {
 
   const handleDelete = async (taskId) => {
     try {
-      await axios.delete(`http://localhost:5000/task/${taskId}`, {
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/task/${taskId}`, {
         withCredentials: true,
       });
       setTasks(tasks.filter((task) => task._id !== taskId));
@@ -91,7 +91,7 @@ const Dashboard = () => {
   const handleUpdate = async (taskId, updatedData) => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/task/${taskId}`,
+        `${import.meta.env.VITE_BACKEND_URL}/task/${taskId}`,
         updatedData,
         { withCredentials: true }
       );
@@ -126,7 +126,7 @@ const Dashboard = () => {
   const handleToggleComplete = async (task) => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/task/${task._id}`,
+        `${import.meta.env.VITE_BACKEND_URL}/task/${task._id}`,
         { ...task, isCompleted: !task.isCompleted },
         { withCredentials: true }
       );

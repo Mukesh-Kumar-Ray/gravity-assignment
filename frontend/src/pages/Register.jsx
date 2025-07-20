@@ -16,7 +16,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/user/register", { name, email, password }, { withCredentials: true });
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/register`, { name, email, password }, { withCredentials: true });
       setIsAuthenticated(true);
       toast.success("🦄 Successfully Registered", {
               position: "top-center",
